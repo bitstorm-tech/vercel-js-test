@@ -1,9 +1,14 @@
 <script context="module">
     export async function load({fetch}) {
         const response = await fetch("/api/accounts");
-        const accounts = response.json();
+        const accounts = await response.json();
+
+        console.log("Accounts svelte:", accounts)
+
         return {
-            props: accounts
+            props: {
+                accounts
+            }
         }
     }
 </script>
@@ -13,4 +18,4 @@
 </script>
 
 <h1>Welcome to SvelteKit</h1>
-{accounts}
+{JSON.stringify(accounts)}
