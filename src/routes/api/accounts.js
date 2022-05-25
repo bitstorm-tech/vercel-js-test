@@ -1,7 +1,7 @@
-import { prisma } from "../../lib/prisma";
+import prismaClient from "../../lib/prisma";
 
 export async function get() {
-  const accounts = prisma.account.findMany();
+  const accounts = prismaClient.account.findMany();
   return {
     body: accounts,
   };
