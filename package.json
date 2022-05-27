@@ -21,6 +21,7 @@
   },
   "type": "module",
   "dependencies": {
-    "@prisma/client": "^3.14.0"
+    "@prisma/client": "^3.14.0",
+    "randomstring": "^1.2.2"
   }
 }
