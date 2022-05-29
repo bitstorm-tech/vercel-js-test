@@ -1,21 +1,27 @@
 <script context="module">
-    export async function load({fetch}) {
-        const response = await fetch("/api/accounts");
-        const accounts = await response.json();
+  export async function load({fetch}) {
+    const responseAccounts = await fetch("/api/accounts");
+    const accounts = await responseAccounts.json();
 
-        console.log("Accounts svelte:", accounts)
+    const responseRandom = await fetch("/api/random");
+    const rndString = await responseRandom.text();
 
-        return {
-            props: {
-                accounts
-            }
-        }
+    console.log("Accounts:", accounts)
+    console.log("RndString:", rndString)
+
+    return {
+      props: {
+        accounts,
+        rndString
+      }
     }
+  }
 </script>
 
 <script>
-    export let accounts;
+  export let accounts;
+  export let rndString
 </script>
 
-<h1>Welcome to SvelteKit</h1>
-{JSON.stringify(accounts)}
+<div>Random String: {rndString}</div>
+<div>Accounts: {JSON.stringify(accounts)}</div>
